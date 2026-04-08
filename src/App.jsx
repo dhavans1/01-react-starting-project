@@ -3,10 +3,16 @@ import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import Example from "./components/Example/Example.jsx";
 import { useState } from 'react';
+import TabContent from './components/TabContent/TabContent.jsx';
 
 function App() {
   const [exampleIdx, setExampleIdx] = useState(0);
   const [activeBtnIdx, setActiveBtnIdx] = useState(0);
+
+  function onTabSelect(i) {
+    setActiveBtnIdx(i);
+    setExampleIdx(i);
+  }
 
   return (
     <div>
@@ -27,13 +33,7 @@ function App() {
           <menu>
             {
               examples.map((example, i) => (
-                  <button 
-                    key={example.title} 
-                    onClick={() => {setExampleIdx(i); setActiveBtnIdx(i);}}
-                    className={activeBtnIdx === i ? 'active' : ''}
-                  >
-                    {example.title}
-                  </button>                
+                  <TabContent key={example + i} title={example.title} onSelect={() => onTabSelect(i)} activeBtnIdx={activeBtnIdx} tabIdx={i}></TabContent>            
               ))
             }
           </menu>
