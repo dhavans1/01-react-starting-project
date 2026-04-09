@@ -21,12 +21,13 @@ export default function Examples() {
         >
           <menu>
             {examples.map((example, i) => (
-                <TabContent 
+                <TabContent
                     key={example + i}
                     title={example.title}
                     onClick={() => onTabSelect(i)}
                     activeBtnIdx={activeBtnIdx}
-                    tabIdx={i}>
+                    tabIdx={i}
+                    ButtonsContainer="li">
                 </TabContent>            
             ))}
           </menu>
